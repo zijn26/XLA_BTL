@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhận Diện Trái Cây - AI Recognition</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🍎 Nhận Diện Trái Cây</h1>
+            <p class="subtitle">Sử dụng AI và Deep Learning để nhận diện các loại trái cây</p>
+        </header>
+
+        <!-- Upload Section -->
+        <section class="upload-section">
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-content">
+                    <div class="upload-icon">📸</div>
+                    <h3>Kéo thả ảnh vào đây hoặc click để chọn</h3>
+                    <p>Hỗ trợ: PNG, JPG, JPEG, GIF, BMP</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                    <button class="btn btn-primary" onclick="document.getElementById('fileInput').click()">
+                        Chọn Ảnh
+                    </button>
+                </div>
+                <div class="preview-container" id="previewContainer" style="display: none;">
+                    <img id="previewImage" src="" alt="Preview">
+                    <button class="btn-remove" id="removeBtn" onclick="removeImage()">✕</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Đang xử lý ảnh và phân tích...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <!-- Main Prediction -->
+            <div class="prediction-card">
+                <h2>Kết Quả Dự Đoán</h2>
+                <div class="main-prediction">
+                    <div class="prediction-icon">🍎</div>
+                    <div class="prediction-info">
+                        <h3 id="predictionName">-</h3>
+                        <p class="confidence-text">Độ tin cậy: <span id="predictionConfidence">-</span>%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Predictions -->
+            <div class="top-predictions-card">
+                <h3>Top 5 Dự Đoán</h3>
+                <div class="predictions-list" id="predictionsList">
+                    <!-- Predictions will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Processed Images -->
+            <div class="processed-images-card">
+                <h3>Các Bước Xử Lý Ảnh</h3>
+                <div class="processed-images-grid" id="processedImagesGrid">
+                    <!-- Processed images will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage" style="display: none;">
+            <span class="error-icon">⚠️</span>
+            <span id="errorText"></span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
